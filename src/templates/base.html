@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    {% block head %}{% endblock %}
+    <title>OnlineStore</title>
+</head>
+<body>
+<nav class="flex justify-between text-3xl my-3">
+    <ul class="flex ml-10">
+        <li>Интернет-Магазин</li>
+    </ul>
+    <ul class="flex gap-5 mr-10">
+        <li>Мой аккаунт</li>
+        <li>Выйти</li>
+    </ul>
+</nav>
+<hr>
+<div id="content">
+    {% block content %}
+    <div class="flex justify-center flex-col items-center">
+        <div class="flex my-3 gap-5">
+            <input id="product_search" type="text" placeholder="Название товара" class="text-xl">
+            <button onclick="searchProducts()" class="border-2 rounded-3xl bg-gray-300 p-3">Поиск по товарам</button>
+        </div>
+        <span>Например: Xiaomi redmi 5, Lenogo G7</span>
+<!--    <div class="flex justify-center flex-col items-center">-->
+<!--        <div class="flex my-3 gap-5">-->
+<!--            <button onclick="sendReportEmail()" class="border-2 rounded-3xl bg-gray-300 p-3">Отправить отчёт</button>-->
+<!--        </div>-->
+<!--    </div>-->
+        {% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', path='js/index.js') }}"></script>
+</body>
+</html>

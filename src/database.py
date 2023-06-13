@@ -1,7 +1,6 @@
 from typing import AsyncGenerator
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import MetaData
 from sqlalchemy.orm import sessionmaker
 
 from src.config import DB_NAME, DB_PORT, DB_HOST, DB_PASS, DB_USER

@@ -11,12 +11,13 @@ router_products = APIRouter(
 )
 
 
-@router_products.get("/get/{product_id}")
-async def get_product(product_id: int, session: AsyncSession = Depends(get_async_session)):
+@router_products.get("/get/{product_name}")
+async def get_product(product_name: str, session: AsyncSession = Depends(get_async_session)):
     """Получение продукта"""
     try:
-        result = await session.get(Product, product_id)
-        return result
+        stmt = select(Product).where(Product.name == product_name)
+        result = await session.execute(stmt)
+        return result.scalars().all()
 
     except Exception:
         raise HTTPException(status_code=500, detail={

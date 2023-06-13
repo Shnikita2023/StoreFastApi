@@ -10,6 +10,8 @@ router_categories = APIRouter(
     prefix="/categorie",
     tags=["Categories"]
 )
+
+
 @router_categories.get("/get/{categorie_id}", summary='Получение категории')
 async def get_categorie(categorie_id: int, session: AsyncSession = Depends(get_async_session)):
     try:
@@ -83,5 +85,3 @@ async def delete_categorie(categorie_id: int, session: AsyncSession = Depends(ge
             "data": None,
             "details": None
         })
-
-
