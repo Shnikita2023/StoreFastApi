@@ -16,12 +16,7 @@ async def get_brand(brand_id: int, session: AsyncSession = Depends(get_async_ses
     """Получение бренда"""
     try:
         result = await session.get(Brand, brand_id)
-
-        return {
-            "status": "succeses",
-            "data": result,
-            "details": None
-        }
+        return result
 
     except Exception:
         raise HTTPException(status_code=500, detail={
@@ -40,7 +35,7 @@ async def add_brand(new_brand: CreateBrand, session: AsyncSession = Depends(get_
 
         return {
             "status": "succeses",
-            "data": "brand added",
+            "data": f"brend {new_brand.name} added",
             "details": None
         }
 
